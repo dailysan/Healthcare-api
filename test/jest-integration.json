@@ -1,0 +1,28 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": "./test/.*\\.test\\.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "transformIgnorePatterns": [
+    "node_modules/(?!(@nestjs|class-validator|class-transformer|reflect-metadata))"
+  ],
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/src/$1"
+  },
+  "globals": {
+    "ts-jest": {
+      "tsconfig": "tsconfig.json",
+      "compilerOptions": {
+        "module": "commonjs"
+      }
+    }
+  },
+  "testTimeout": 30000,
+  "detectOpenHandles": true,
+  "forceExit": true,
+  "maxWorkers": 1,
+  "setupFiles": ["../test/setup.ts"]
+}

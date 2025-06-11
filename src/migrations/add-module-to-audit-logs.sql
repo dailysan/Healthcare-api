@@ -1,0 +1,1 @@
+ALTER TABLE audit_logs ADD COLUMN module VARCHAR(50) NOT NULL DEFAULT 'unknown';

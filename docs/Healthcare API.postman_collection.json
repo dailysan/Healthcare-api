@@ -1,0 +1,1046 @@
+{
+	"info": {
+		"_postman_id": "1aedc13c-a4fd-4a85-bfb7-0c0729ab7791",
+		"name": "Healthcare API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28937835"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\",\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/refresh",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patients",
+			"item": [
+				{
+					"name": "Create Patient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\",\n  \"dateOfBirth\": \"{{dateOfBirth}}\",\n  \"gender\": \"{{gender}}\",\n  \"phone\": \"{{phone}}\",\n  \"email\": \"{{email}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/patients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Patients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/patients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/patients/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patients",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient by Email",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/patients/email/{{email}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patients",
+								"email",
+								"{{email}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"{{firstName}}\",\n  \"lastName\": \"{{lastName}}\",\n  \"dateOfBirth\": \"{{dateOfBirth}}\",\n  \"gender\": \"{{gender}}\",\n  \"phone\": \"{{phone}}\",\n  \"email\": \"{{email}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/patients/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patients",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Patient",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/patients/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"patients",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoices",
+			"item": [
+				{
+					"name": "Generate Invoice",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"billingSessionId\": {{billingSessionId}},\n  \"items\": [\n    {\n      \"code\": \"{{code}}\",\n      \"quantity\": {{quantity}}\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Invoices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/invoices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoice by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/invoices/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Invoices by Billing Session",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/invoices/billing-session/{{billingSessionId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"billing-session",
+								"{{billingSessionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Invoice",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"items\": [\n    {\n      \"code\": \"{{code}}\",\n      \"quantity\": {{quantity}}\n    }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/invoices/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Invoice",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/invoices/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"invoices",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Billing Sessions",
+			"item": [
+				{
+					"name": "Create Billing Session",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"patientId\": {{patientId}},\n  \"startDate\": \"{{startDate}}\",\n  \"endDate\": \"{{endDate}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/billing-sessions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"billing-sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Billing Sessions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/billing-sessions",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"billing-sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Billing Session by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/billing-sessions/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"billing-sessions",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Billing Sessions by Patient",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/billing-sessions/patient/{{patientId}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"billing-sessions",
+								"patient",
+								"{{patientId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Billing Session",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"patientId\": {{patientId}},\n  \"startDate\": \"{{startDate}}\",\n  \"endDate\": \"{{endDate}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/billing-sessions/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"billing-sessions",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Billing Session",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/billing-sessions/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"billing-sessions",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OHIP Codes",
+			"item": [
+				{
+					"name": "Create OHIP Code",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"{{code}}\",\n  \"description\": \"{{description}}\",\n  \"amount\": {{amount}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/ohip",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ohip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All OHIP Codes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/ohip",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ohip"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get OHIP Code by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/ohip/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ohip",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update OHIP Code",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"{{code}}\",\n  \"description\": \"{{description}}\",\n  \"amount\": {{amount}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/ohip/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ohip",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete OHIP Code",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/ohip/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ohip",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Configs",
+			"item": [
+				{
+					"name": "Create Config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"key\": \"{{key}}\",\n  \"value\": \"{{value}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/configs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"configs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Configs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/configs",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"configs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Config by Key",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/configs/{{key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"configs",
+								"{{key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Config",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"value\": \"{{value}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/configs/{{key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"configs",
+								"{{key}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Config",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/configs/{{key}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"configs",
+								"{{key}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "List Roles",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/roles?page={{page}}&limit={{limit}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}",
+									"description": "Page number"
+								},
+								{
+									"key": "limit",
+									"value": "{{limit}}",
+									"description": "Items per page"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Role by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/roles/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Role",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{name}}\",\n  \"permissions\": [\n    \"{{permission1}}\",\n    \"{{permission2}}\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/roles",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{name}}\",\n  \"permissions\": [\n    \"{{permission1}}\",\n    \"{{permission2}}\"\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/roles/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/roles/{{id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Role to User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": {{userId}},\n  \"roleId\": {{roleId}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/roles/assign",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								"assign"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Role from User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": {{userId}},\n  \"roleId\": {{roleId}}\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/roles/assign",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"roles",
+								"assign"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
